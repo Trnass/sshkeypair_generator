@@ -3,7 +3,7 @@ import subprocess
 import sys
 import yaml
 
-lang = "en"
+lang = "cs"
 
 def load_localization(file_path):
     with open(file_path, 'r', encoding='utf-8') as file:
@@ -27,7 +27,9 @@ def configure_ssh_config(alias, localization):
     with open(os.path.expanduser('~/.ssh/config'), 'a') as config_file:
         config_file.write(ssh_config_entry)
     print(f'{localization[lang]["config_gen_1"]} "{alias}" {localization[lang]["config_gen_2"]}.')
-    
+
+# git clone alias:Trnass/maturita.trnass.cz.git    
+# git@github.com-test:Trnass/sshkeypair_generator.git
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
@@ -38,3 +40,5 @@ if __name__ == "__main__":
         public_key = generate_ssh_key(alias, localization)
         configure_ssh_config(alias, localization)
         print(f'\n{localization[lang]["public_key"]}\n{public_key}\n')
+        print(f'\n{localization[lang]["todo_git_init"]}\ngit init\n')
+        print(f'\n{localization[lang]["todo_git_clone"]}\ngit@github.com-{alias}/{localization[lang]["nazev_repozitare"]}.git\n')
