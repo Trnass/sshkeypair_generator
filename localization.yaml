@@ -1,0 +1,16 @@
+cs:
+  ssh_key_pair_1: "SSH klíčový pár pro alias"
+  ssh_key_pair_2: "úspěšně vygenerován do"
+  config_gen_1: "SSH konfigurace pro alias"
+  config_gen_2: "úspěšně přidána."
+  usage: "Použití: python3 generate_ssh_keys.py <alias>"
+  public_key: "Veřejný klíč na GitHub\n"
+
+en:
+  ssh_key_pair_1: "SSH key pair for alias"
+  ssh_key_pair_2: "successfully generated to"
+  config_gen_1: "SSH config for alias"
+  config_gen_2: "successfully added."
+  usage: "Usage: python3 generate_ssh_keys.py <alias>"
+  public_key: "Public key for GitHub\n"
+

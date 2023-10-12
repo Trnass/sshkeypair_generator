@@ -1,30 +1,40 @@
 import os
 import subprocess
 import sys
+import yaml
 
-def generate_ssh_key(alias):
+lang = "cs"
+
+def load_localization(file_path):
+    with open(file_path, 'r', encoding='utf-8') as file:
+        localization = yaml.safe_load(file)
+    return localization
+
+def generate_ssh_key(alias, localization):
     output_file = os.path.expanduser(f'~/.ssh/{alias}_deploy_key')
     subprocess.run(['ssh-keygen', '-t', 'rsa', '-b', '4096', '-C', f'{alias} Key', '-f', output_file])
-    print(f'SSH key pair pro alias "{alias}" úspěšně vygenerován do {output_file}.')
+    print(f'{localization[lang]["ssh_key_pair_1"]} "{alias}" {localization[lang]["ssh_key_pair_2"]} {output_file}.')
     public_key_file = f'{output_file}.pub'
     with open(public_key_file, 'r') as pubkey_file:
         public_key = pubkey_file.read().strip()
     return public_key
 
-def configure_ssh_config(alias):
+def configure_ssh_config(alias, localization):
     identity_file = os.path.expanduser(f'~/.ssh/{alias}_deploy_key')
     ssh_config_entry = f'\nHost github.com-{alias}\n' \
                        f'        Hostname github.com\n' \
                        f'        IdentityFile={identity_file}'
     with open(os.path.expanduser('~/.ssh/config'), 'a') as config_file:
         config_file.write(ssh_config_entry)
-    print(f'SSH config pro alias "{alias}" úspěšně přidán.')
+    print(f'{localization[lang]["config_gen_1"]} "{alias}" {localization[lang]["config_gen_2"]}.')
+    
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: python generate_ssh_keys.py <alias>")
+        print(f'{localization[lang]["usage"]}')
     else:
         alias = sys.argv[1]
-        public_key = generate_ssh_key(alias)
-        configure_ssh_config(alias)
-        print(f'Public key to add to GitHub:\n{public_key}')
+        localization = load_localization('localization.yaml')
+        public_key = generate_ssh_key(alias, localization)
+        configure_ssh_config(alias, localization)
+        print(f'\n{localization[lang]["public_key"]}\n{public_key}\n')
