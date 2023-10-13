@@ -41,4 +41,4 @@ if __name__ == "__main__":
         configure_ssh_config(alias, localization)
         print(f'\n{localization[lang]["public_key"]}\n{public_key}\n')
         print(f'\n{localization[lang]["todo_git_init"]}\ngit init\n')
-        print(f'\n{localization[lang]["todo_git_clone"]}\ngit clone git@github.com-{alias}/{localization[lang]["nazev_repozitare"]}.git\n')
+        print(f'\n{localization[lang]["todo_git_clone"]}\ngit clone git@github.com-{alias}/{localization[lang]["author_link"]}/{localization[lang]["nazev_repozitare"]}.git\n')

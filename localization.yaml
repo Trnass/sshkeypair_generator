@@ -7,6 +7,7 @@ cs:
   public_key: "Veřejný klíč na GitHub: \n"
   todo_git_init: "Nyní se přesuň do složky kam chceš naklonovat repozitář a odešli příkaz: "
   todo_git_clone: "Následně můžeš repozitář klonovat pomocí: "
+  author_link: "Username"
   nazev_repozitare: "nazev_repozitare"
 
 en:
@@ -18,4 +19,5 @@ en:
   public_key: "Public key for GitHub\n"
   todo_git_init: "Now, use cd to move into folder where u want to clone git repository and use command: "
   todo_git_clone: "Then you can clone repository using: "
+  author_link: "Username"
   nazev_repozitare: "name_of_repository"
